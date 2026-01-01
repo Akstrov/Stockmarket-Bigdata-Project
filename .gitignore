@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Environment variables
+.env
+*.env
+
+# Data
+*.csv
+*.json
+*.pkl
+*.h5
+data/raw/
+data/processed/
+
+# Docker volumes
+volumes/mongodb/
+volumes/mlflow/
+volumes/airflow/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# DVC
+.dvc/cache
