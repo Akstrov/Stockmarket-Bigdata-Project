@@ -34,3 +34,26 @@ volumes/airflow/
 
 # DVC
 .dvc/cache
+
+# Large data files (download instructions in README)
+data/raw/*.csv
+data/processed/*.csv
+data/train/*.csv
+data/simulate/*.json
+
+# Keep directory structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/train/.gitkeep
+!data/simulate/.gitkeep
+
+# Model artifacts
+*.h5
+*.pkl
+*.joblib
+ml_models/models/*.h5
+ml_models/models/*.pkl
+
+# MLflow artifacts
+mlruns/
+mlflow_artifacts/
