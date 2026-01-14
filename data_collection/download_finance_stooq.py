@@ -59,7 +59,7 @@ def main():
     print("=" * 70)
     print("\nPeriod: January 1, 2021 - June 30, 2021\n")
 
-    os.makedirs("data/raw", exist_ok=True)
+    os.makedirs("../data/raw", exist_ok=True)
 
     tickers = ["GME", "AMC", "TSLA", "AAPL", "BB", "NOK", "PLTR", "SPCE"]
 
