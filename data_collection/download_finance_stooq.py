@@ -8,14 +8,11 @@ import time
 import os
 from datetime import datetime
 
+
 # ------------------------------------------------------------------
 # STOOQ DOWNLOAD FUNCTION
 # ------------------------------------------------------------------
-def download_stock_stooq(
-    ticker,
-    start="2021-01-01",
-    end="2021-06-30"
-):
+def download_stock_stooq(ticker, start="2020-09-29", end="2021-08-16"):
     print(f"   Downloading {ticker}...", end=" ", flush=True)
 
     # Stooq uses lowercase + .us for US stocks
@@ -34,10 +31,7 @@ def download_stock_stooq(
         df["date"] = pd.to_datetime(df["date"])
 
         # Filter date range
-        df = df[
-            (df["date"] >= start) &
-            (df["date"] <= end)
-        ]
+        df = df[(df["date"] >= start) & (df["date"] <= end)]
 
         if df.empty:
             print("❌ No data in date range")
@@ -52,12 +46,13 @@ def download_stock_stooq(
         print(f"❌ Error: {str(e)[:50]}")
         return None
 
+
 # ------------------------------------------------------------------
 def main():
     print("=" * 70)
     print("📊 DOWNLOADING STOCK DATA WITH STOOQ")
     print("=" * 70)
-    print("\nPeriod: January 1, 2021 - June 30, 2021\n")
+    print("\nPeriod: 2020-09-29 to 2021-08-16\n")
 
     os.makedirs("../data/raw", exist_ok=True)
 
@@ -94,7 +89,9 @@ def main():
     print(f"   Total records: {len(combined)}")
     print(f"   Saved to: {output_file}")
     print(f"   Tickers: {sorted(combined['ticker'].unique().tolist())}")
-    print(f"   Date range: {combined['date'].min().date()} to {combined['date'].max().date()}")
+    print(
+        f"   Date range: {combined['date'].min().date()} to {combined['date'].max().date()}"
+    )
 
     if failed:
         print(f"\n⚠️  Failed tickers: {failed}")
@@ -105,7 +102,7 @@ def main():
     print("\n📊 Records per ticker:")
     print(combined.groupby("ticker").size().to_string())
 
+
 # ------------------------------------------------------------------
 if __name__ == "__main__":
     main()
-

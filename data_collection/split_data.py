@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pandas as pd
 
 print("=" * 70)
@@ -65,10 +66,7 @@ stock_end = stock["date"].max()
 print(f"   Stock date range: {stock_start} → {stock_end}")
 
 reddit_before = len(reddit)
-reddit = reddit[
-    (reddit["date"] >= stock_start) &
-    (reddit["date"] <= stock_end)
-].copy()
+reddit = reddit[(reddit["date"] >= stock_start) & (reddit["date"] <= stock_end)].copy()
 
 print(f"   Reddit filtered: {reddit_before:,} → {len(reddit):,} posts")
 
