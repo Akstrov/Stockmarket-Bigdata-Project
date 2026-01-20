@@ -24,7 +24,7 @@ st.set_page_config(
 # Auto-refresh setup with state preservation
 # ----------------------------
 # Only refresh every 10 seconds
-refresh_interval = 10_000  # 30 seconds in milliseconds
+refresh_interval = 10_000  # 10 seconds in milliseconds
 
 # Initialize session state for active tab
 if "active_tab" not in st.session_state:
@@ -64,7 +64,7 @@ has_predictions = "predictions" in collections
 
 
 # ----------------- Load Data -----------------
-@st.cache_data(ttl=30)  # Reduced TTL to 30 seconds for faster updates
+@st.cache_data(ttl=10)  # Reduced TTL to 10 seconds for faster updates
 def load_stock_data(ticker):
     if "stock_raw" not in collections:
         return pd.DataFrame()
@@ -88,7 +88,7 @@ def load_stock_data(ticker):
     return df
 
 
-@st.cache_data(ttl=30)
+@st.cache_data(ttl=10)
 def load_reddit_features(ticker):
     if "reddit_features_15m" not in collections:
         return pd.DataFrame()
@@ -104,7 +104,7 @@ def load_reddit_features(ticker):
     return df
 
 
-@st.cache_data(ttl=30)
+@st.cache_data(ttl=10)
 def load_predictions(ticker):
     if "predictions" not in collections:
         return pd.DataFrame()
@@ -118,7 +118,7 @@ def load_predictions(ticker):
     return df
 
 
-@st.cache_data(ttl=30)
+@st.cache_data(ttl=10)
 def load_recent_posts(ticker, limit=10):
     if "reddit_raw" not in collections:
         return pd.DataFrame()
